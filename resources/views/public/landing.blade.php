@@ -730,7 +730,7 @@
                 <div style="display:flex;align-items:center;justify-content:space-between">
                     <div style="display:flex;align-items:center;gap:12px">
                         <span style="font-size:10px;font-weight:700;color:#1B2A8A">
-                            ⚓ {{ $loadingPreview['vessel_count'] }} Vessel
+                             {{ $loadingPreview['vessel_count'] }} Vessel
                         </span>
                         <span style="font-size:10px;color:#94a3b8">
                             {{ $loadingPreview['total_shipment'] }} Shipments
