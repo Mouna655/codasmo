@@ -10,20 +10,20 @@ return new class extends Migration {
             $table->date('upload_date')->index();
 
             // Bulan data (April 2026 dst)
-            $table->unsignedTinyInteger('data_month');   // 1-12
-            $table->unsignedSmallInteger('data_year');
+            $table->tinyInteger('data_month');   // 1-12
+            $table->smallInteger('data_year');
             $table->string('data_month_label', 30);      // "April 2026"
 
             // Week yang dipilih admin saat upload (untuk kolom Pen/Dem)
-            $table->unsignedTinyInteger('week_number')->default(2); // W0-W5
+            $table->tinyInteger('week_number')->default(2); // W0-W5
             $table->string('pen_week_label', 30)->default('Pen. W2');
             $table->string('dem_week_label', 30)->default('Dem. W2');
 
             $table->string('filename');
             $table->string('original_filename');
-            $table->unsignedInteger('total_rows')->default(0);
+            $table->integer('total_rows')->default(0);
 
-            $table->enum('status', ['processing','success','partial','failed'])->default('processing');
+            $table->string('status', 20)->default('processing');
             $table->text('error_message')->nullable();
 
             $table->foreignId('uploaded_by')->nullable()->constrained('users')->nullOnDelete();

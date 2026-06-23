@@ -49,7 +49,7 @@ protected $fillable = [
     public static function availableDates(): array
     {
         return static::where('status', 'success')
-            ->selectRaw('DATE(upload_date) as d, data_month, data_year, data_month_label, pen_week_label, dem_week_label')
+            ->selectRaw('CAST(upload_date AS DATE) as d, data_month, data_year, data_month_label, pen_week_label, dem_week_label')
             ->distinct()
             ->orderByDesc('d')
             ->limit(90)

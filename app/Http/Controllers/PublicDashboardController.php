@@ -321,7 +321,7 @@ private function formatTon(float $val): string
         $dashboard = $dc->build($date);
 
         // Ambil daftar tanggal yang punya data (untuk date picker)
-        $availableDates = DailyProduction::selectRaw('DATE(report_date) as d')
+        $availableDates = DailyProduction::selectRaw('CAST(report_date AS DATE) as d')
             ->distinct()->orderByDesc('d')->limit(60)->pluck('d');
 
         return view('public.daily', compact('dashboard', 'date', 'availableDates'));

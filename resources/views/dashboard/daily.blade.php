@@ -17,7 +17,7 @@
                    class="px-3 py-2 text-xs font-semibold text-slate-700 bg-white
                           border border-slate-200 rounded-xl focus:outline-none
                           focus:ring-2 focus:ring-itm-blue/40 cursor-pointer"
-                   onchange="window.location.href='/dashboard?date='+this.value">
+                   onchange="window.location.href='{{ route('dashboard.daily') }}?date='+this.value">
             @if(auth()->user()->canEnterData())
             <button onclick="exportDash('png')" class="btn-outline">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

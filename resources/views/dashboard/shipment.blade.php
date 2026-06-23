@@ -326,7 +326,7 @@
     <div class="sh-hd-top">
         <!-- Brand -->
         <div class="sh-brand">
-            <a href="{{ route('home') }}"
+            <a href="{{ route('dashboard.loading') }}"
                style="display:flex;align-items:center;gap:4px;text-decoration:none;
                       color:rgba(255,255,255,.65);font-size:11px;font-weight:600"
                onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,.65)'">

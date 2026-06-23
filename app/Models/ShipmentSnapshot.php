@@ -35,7 +35,7 @@ class ShipmentSnapshot extends Model
     public static function availableDates(): array
     {
         return static::where('status','success')
-            ->selectRaw('DATE(upload_date) as d')
+            ->selectRaw('CAST(upload_date AS DATE) as d')
             ->distinct()->orderByDesc('d')->limit(90)->pluck('d')
             ->map(fn($d) => [
                 'date'  => $d,

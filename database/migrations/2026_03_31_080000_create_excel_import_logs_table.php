@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->string('filename');
             $table->unsignedInteger('rows_imported')->default(0);
             $table->text('errors')->nullable();
-            $table->enum('status', ['success','partial','failed'])->default('success');
+            $table->string('status', 20)->default('success');
             $table->foreignId('uploaded_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
         });

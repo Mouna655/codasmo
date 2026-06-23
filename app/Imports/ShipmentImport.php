@@ -29,6 +29,8 @@ class ShipmentImport
      *   [59] Status           [66] TS(AR)          [68] CV(AR)
      *   [69] CV(NAR)
      */
+    private const BATCH_SIZE = 90;
+
     public function import(string $filePath, int $snapshotId): void
     {
         $snapshot    = ShipmentSnapshot::findOrFail($snapshotId);
@@ -100,7 +102,7 @@ class ShipmentImport
                     'updated_at'    => $now,
                 ];
 
-                if (count($buffer) >= 100) {
+                if (count($buffer) >= self::BATCH_SIZE) {
                     ShipmentRecord::insert($buffer);
                     $this->imported += count($buffer);
                     $buffer = [];

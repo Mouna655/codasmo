@@ -37,6 +37,7 @@ class SiteSeeder extends Seeder
                 'sub_sites' => [
                     ['code' => 'LS', 'name' => 'Low Sulphur'],
                     ['code' => 'HS', 'name' => 'High Sulphur'],
+                    ['code' => 'MCV LS', 'name' => 'Medium Sulphur'],
                 ],
             ],
             [

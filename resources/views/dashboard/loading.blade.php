@@ -70,7 +70,7 @@
     .hd-sub   { font-size: 9px; color: rgba(255,255,255,.5); margin-top: 1px; }
 
     /* Tab nav */
-    .tab-nav { display: flex; gap: 4px; background: rgba(0,0,0,.2); padding: 4px; border-radius: 12px; }
+    .tab-nav { display: flex; gap: 4px; background: #1B2A8A; padding: 4px; border-radius: 12px; margin-bottom: 12px;}
     .tab-btn {
         padding: 6px 18px; border-radius: 9px; font-size: 12px; font-weight: 700;
         cursor: pointer; transition: all .25s cubic-bezier(.34,1.56,.64,1);
@@ -153,9 +153,12 @@
     ════════════════════════════════════════════════════ */
     .ld-grid {
         display: grid;
-        grid-template-columns: 1fr 460px;
+        grid-template-columns: minmax(0, 1fr) 460px;
         gap: 14px;
     }
+    .left-panel,
+    .right-panel,
+    .table-scroll { min-width: 0; }
     @media(max-width:1200px) { .ld-grid { grid-template-columns: 1fr; } }
 
     /* ── Left panel (tables) ── */
@@ -462,6 +465,22 @@
 
 @else
 
+<!-- Tab navigation -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('overall',this)" id="btn-overall">
+                Overall
+            </button>
+            <button class="tab-btn" onclick="switchTab('boct',this)" id="btn-boct">
+                BoCT
+            </button>
+            <button class="tab-btn" onclick="switchTab('mahakam',this)" id="btn-mahakam">
+                Mahakam
+            </button>
+            <button class="tab-btn" onclick="window.location.href='{{ route('dashboard.shipment') }}'">
+                Summary Shipment
+            </button>
+        </nav>
+    
 {{-- Report title bar --}}
 <div class="report-title-bar">
     <div>
@@ -893,7 +912,7 @@
 const DATA = @json($data);
 let currentTab = 'overall';
 
-window.addEventListener('DOMContentLoaded', () => {
+
 
 /* ── Tab switching ──────────────────────── */
 const HEADINGS = {
@@ -911,6 +930,8 @@ function switchTab(tab, btn) {
     if (h) h.textContent = HEADINGS[tab] || HEADINGS.overall;
     currentTab = tab;
 }
+
+window.addEventListener('DOMContentLoaded', () => {
 
 /* ── Chart defaults ─────────────────────── */
 Chart.defaults.font.family = 'Inter, sans-serif';

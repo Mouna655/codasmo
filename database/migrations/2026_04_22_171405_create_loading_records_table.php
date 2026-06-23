@@ -34,8 +34,8 @@ return new class extends Migration {
             $table->foreignId('snapshot_id')->constrained('loading_snapshots')->cascadeOnDelete();
 
             // Identifikasi baris
-            $table->unsignedSmallInteger('no_row');
-            $table->unsignedSmallInteger('no_mahakam')->default(0);
+            $table->smallInteger('no_row');
+            $table->smallInteger('no_mahakam')->default(0);
 
             // Informasi shipment
             $table->string('company', 20);

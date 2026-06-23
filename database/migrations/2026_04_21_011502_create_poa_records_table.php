@@ -23,10 +23,10 @@ return new class extends Migration {
                   ->constrained('poa_snapshots')
                   ->cascadeOnDelete();
 
-            $table->unsignedSmallInteger('year');
+            $table->smallInteger('year');
 
             // Nomor bulan 1–12 (lebih efisien untuk query & sort)
-            $table->unsignedTinyInteger('month_number');
+            $table->tinyInteger('month_number');
             // Nama bulan asli dari Excel ("January", "February", dst)
             $table->string('month_name', 20);
 

@@ -27,7 +27,7 @@ return new class extends Migration {
         Schema::create('daily_productions', function (Blueprint $table) {
             $table->id();
             $table->date('report_date')->index();
-            $table->foreignId('site_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('site_id')->constrained()->noActionOnDelete();
             $table->foreignId('sub_site_id')->constrained()->cascadeOnDelete();
 
             // FC Production (semua sub-site)
@@ -47,8 +47,8 @@ return new class extends Migration {
             $table->decimal('fc_plan', 15, 2)->default(0);
 
             // Audit
-            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
-            $table->foreignId('updated_by')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('created_by')->nullable()->constrained('users')->noActionOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('users')->noActionOnDelete();
             $table->timestamp('input_at')->nullable();
             $table->timestamps();
 

@@ -60,7 +60,7 @@ class PoaSnapshot extends Model
     public static function availableDates(): array
     {
         return static::where('status', 'success')
-            ->selectRaw('DATE(upload_date) as d, data_year')
+            ->selectRaw('CAST(upload_date AS DATE) as d, data_year')
             ->distinct()
             ->orderByDesc('d')
             ->limit(90)

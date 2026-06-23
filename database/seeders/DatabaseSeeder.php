@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
        
         $this->seedSites();
-        $this->seedPlans();
-        $this->seedDailyProductions();
+        // $this->seedPlans();
+        // $this->seedDailyProductions();
     }
 
     private function seedSites(): void
@@ -51,6 +51,7 @@ class DatabaseSeeder extends Seeder
             'BEK'  => [
                 ['code'=>'LS','name'=>'Low Sulphur', 'is_primary'=>true, 'chart_color'=>'#1B2A8A','sort_order'=>1],
                 ['code'=>'HS','name'=>'High Sulphur','is_primary'=>false,'chart_color'=>'#5DCAA5','sort_order'=>2],
+                ['code'=>'MCV LS','name'=>'Medium Sulphur','is_primary'=>false,'chart_color'=>'#7B6CF5','sort_order'=>3],
             ],
             'GPK'  => [['code'=>'GPK', 'name'=>'GPK', 'is_primary'=>true,'chart_color'=>'#74C0FC','sort_order'=>1]],
             'JBG'  => [['code'=>'JBG', 'name'=>'JBG', 'is_primary'=>true,'chart_color'=>'#1B2A8A','sort_order'=>1]],
@@ -92,9 +93,10 @@ class DatabaseSeeder extends Seeder
 
     private function seedDailyProductions(): void
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DailyProduction::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+       // PERUBAHAN DISINI: Menggunakan sintaks TRUNCATE CASCADE bawaan MSSQL
+        DB::statement('TRUNCATE TABLE daily_productions');
+        DB::statement("DBCC CHECKIDENT ('daily_productions', RESEED, 0)");
+
 
         // ── Data mentah dari Excel baris per baris ─────────────────────
         // Format: site → sub_site → [fc_daily, fc_mtd, psy_daily, psy_mtd, cw_daily, cw_mtd, rom_stock]
@@ -129,7 +131,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         $operator    = User::where('role','operator')->first();
-        $snapshotDate = '2026-03-17'; // tanggal dari Excel
+        $snapshotDate = '2026-06-05'; // tanggal dari Excel
         $today        = Carbon::today();
 
         // ── Seed tanggal Excel persis (snapshot) ──────────────────────
@@ -173,7 +175,7 @@ class DatabaseSeeder extends Seeder
             'TIS'=>['TIS'=>[0,4500,0,0,4200,12400,79000,null]],
         ];
 
-        for ($d = 1; $d <= 29; $d++) {
+        for ($d = 1; $d <= 2; $d++) {
             $date = $today->copy()->subDays($d);
             if ($date->format('Y-m-d') === $snapshotDate) continue;
             $day = $date->day;

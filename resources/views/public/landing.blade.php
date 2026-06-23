@@ -53,7 +53,7 @@
         /* ── Hero ───────────────────────────────────────────────── */
         .hero {
             position:relative; min-height:600px;
-            background:linear-gradient(160deg,#0D1B5E 0%,#1B2A8A 45%,#0F6E56 100%);
+            background:linear-gradient(160deg,rgba(13,27,94,.7) 0%,rgba(27,42,138,.7) 45%,rgba(15,110,86,.7) 100%), url('/img/bg-1.png') center/cover no-repeat;
             display:flex; flex-direction:column; align-items:center; justify-content:center;
             padding:80px 32px 60px; text-align:center; overflow:hidden;
         }
@@ -590,21 +590,16 @@
 
                 @else
 
-                {{-- ── Empty state ── --}}
-                <div style="background:#f0fdf9;border-radius:14px;padding:24px;text-align:center;
+                {{-- Empty state --}}
+                <div style="background:#f0fdf9;border-radius:14px;padding:20px;text-align:center;
                             margin-bottom:16px;border:1.5px dashed #A7F3D0">
-                    <svg style="width:36px;height:36px;stroke:#1D9E75;fill:none;stroke-width:1.5;
-                                display:block;margin:0 auto 10px" viewBox="0 0 24 24">
+                    <svg style="width:32px;height:32px;stroke:#1D9E75;fill:none;stroke-width:1.5;
+                                display:block;margin:0 auto 8px" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75
-                                C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75z"/>
+                            d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    <p style="font-size:13px;font-weight:700;color:#1D9E75;margin:0">
-                        Data 3rd Party Belum Tersedia
-                    </p>
-                    <p style="font-size:11px;color:#94a3b8;margin:4px 0 0">
-                        Upload data di Admin Panel terlebih dahulu
-                    </p>
+                    <p style="font-size:12px;font-weight:700;color:#1D9E75;margin:0">No data available yet</p>
+                    <p style="font-size:10px;color:#94a3b8;margin:4px 0 0">Upload loading data in Admin Panel</p>
                 </div>
                 <div style="display:flex;justify-content:flex-end">
                     <span style="display:flex;align-items:center;gap:4px;font-size:12px;font-weight:800;
@@ -902,10 +897,10 @@
                     <svg style="width:32px;height:32px;stroke:#1B2A8A;fill:none;stroke-width:1.5;
                                 display:block;margin:0 auto 8px" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75z"/>
+                            d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    <p style="font-size:12px;font-weight:700;color:#1B2A8A;margin:0">No POA data yet</p>
-                    <p style="font-size:10px;color:#94a3b8;margin:4px 0 0">Upload POA data in Admin Panel</p>
+                    <p style="font-size:12px;font-weight:700;color:#1B2A8A;margin:0">No data available yet</p>
+                    <p style="font-size:10px;color:#94a3b8;margin:4px 0 0">Upload loading data in Admin Panel</p>
                 </div>
                 <div style="display:flex;justify-content:flex-end">
                     <span style="display:flex;align-items:center;gap:4px;font-size:12px;font-weight:800;color:#1B2A8A">
@@ -1062,11 +1057,13 @@
                 <p class="footer-lbl">Dashboard</p>
                 <a href="{{ route('public.daily') }}" class="footer-link">Daily Dashboard</a>
                 <a href="{{ route('public.third-party') }}" class="footer-link">3rd Party Dashboard</a>
+                <a href="{{ route('public.loading') }}" class="footer-link">Weekly Dashboard</a>
+                <a href="{{ route('public.poa') }}" class="footer-link">POA Dashboard</a>
             </div>
             <div>
                 <p class="footer-lbl">System</p>
                 <a href="/admin" class="footer-link">Admin Panel</a>
-                <a href="/admin/login" class="footer-link">Login Operator</a>
+                <a href="/admin" class="footer-link">Login Operator</a>
             </div>
         </div>
         <hr class="footer-divider">

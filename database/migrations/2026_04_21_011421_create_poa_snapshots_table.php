@@ -21,7 +21,7 @@ return new class extends Migration {
 
             $table->string('filename');
             $table->string('original_filename');
-            $table->unsignedInteger('total_rows')->default(0);
+            $table->integer('total_rows')->default(0);
 
             // Status: processing | success | failed
             $table->enum('status', ['processing', 'success', 'failed'])->default('processing');
